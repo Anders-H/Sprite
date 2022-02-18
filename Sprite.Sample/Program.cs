@@ -1,11 +1,8 @@
-﻿using System.Drawing;
-
-namespace Sprite.Sample
+﻿namespace Sprite.Sample
 {
-    class Program
+    internal class Program
     {
         private static SpriteBitmap glBitmap;
-        private static SpriteBitmap wndBitmap;
 
         static void Main(string[] args)
         {
@@ -55,7 +52,6 @@ namespace Sprite.Sample
         private static void Gfx_OnLoadResources(object sender, System.EventArgs e)
         {
             glBitmap = SpriteBitmap.FromImage(Properties.Resources.test, 4, 4);
-            wndBitmap = SpriteBitmap.FromImage((Bitmap)Image.FromFile("wnd.png"), 4, 4);
         }
     }
 }
