@@ -3,11 +3,23 @@
     internal class Program
     {
         private static SpriteBitmap glBitmap;
+        private static bool _loadComplete;
+
+        static Program()
+        {
+            _loadComplete = false;
+        }
 
         static void Main(string[] args)
         {
             var gfx = new SpriteWindow("Test");
             gfx.OnLoadResources += Gfx_OnLoadResources;
+
+            while (!_loadComplete)
+            {
+                System.Threading.Thread.Sleep(100);
+                gfx.DoEvents();
+            }
 
             var i = 0;
             float p = 0;
@@ -51,7 +63,9 @@
 
         private static void Gfx_OnLoadResources(object sender, System.EventArgs e)
         {
+            System.Threading.Thread.Sleep(2000);
             glBitmap = SpriteBitmap.FromImage(Properties.Resources.test, 4, 4);
+            _loadComplete = true;
         }
     }
 }

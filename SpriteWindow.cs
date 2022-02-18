@@ -183,6 +183,10 @@ namespace Sprite
             Gl.glCallList(_quadList);
         }
 
+        public void DoEvents()
+        {
+            Application.DoEvents();
+        }
 
         public void Swap()
         {
