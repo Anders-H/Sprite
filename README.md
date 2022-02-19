@@ -1,8 +1,5 @@
 # Sprite
-Small OpenGL-based sprite rendering library for C#
 
-## Install
-Use the NuGet Package manager and search for "Sprite" or just type:
+A development of [r1sc/Sprite](https://github.com/r1sc/Sprite) with some added functionality and game logic.
 
-``Install-Package Sprite``
-in the NuGet Package manager console.
+Sprite uses .NET Framework 4.8, which is build into Windows 10 May 2019 update and Windows 11.

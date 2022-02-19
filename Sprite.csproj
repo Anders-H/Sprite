@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameEngine.cs" />
     <Compile Include="SpriteWindow.cs" />
     <Compile Include="Gl.cs" />
     <Compile Include="SpriteBitmap.cs" />

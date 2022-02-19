@@ -36,10 +36,10 @@ namespace Sprite
             const int GL_BGRA = 0x80E1;
             Gl.glBindTexture((uint) Gl.GetTarget.GL_TEXTURE_2D, glBitmap.GLTexture);
 
-            Gl.glTexImage2D((uint) Gl.GetTarget.GL_TEXTURE_2D, 0, (int) Gl.Texture.GL_RGBA8, bmpData.Width, bmpData.Height, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, bmpData.Scan0);
-            Gl.glTexParameteri((uint)Gl.GetTarget.GL_TEXTURE_2D, (uint) Gl.TextureParameterName.GL_TEXTURE_MAG_FILTER, (int) Gl.TextureMagFilter.GL_NEAREST);
+            Gl.glTexImage2D((uint)Gl.GetTarget.GL_TEXTURE_2D, 0, (int)Gl.Texture.GL_RGBA8, bmpData.Width, bmpData.Height, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, bmpData.Scan0);
+            Gl.glTexParameteri((uint)Gl.GetTarget.GL_TEXTURE_2D, (uint)Gl.TextureParameterName.GL_TEXTURE_MAG_FILTER, (int)Gl.TextureMagFilter.GL_NEAREST);
             Gl.glTexParameteri((uint)Gl.GetTarget.GL_TEXTURE_2D, (uint)Gl.TextureParameterName.GL_TEXTURE_MIN_FILTER, (int)Gl.TextureMagFilter.GL_NEAREST);
-            Gl.glTexParameteri((uint) Gl.GetTarget.GL_TEXTURE_2D, (uint) Gl.TextureParameterName.GL_TEXTURE_WRAP_S, (int) Gl.TextureWrapMode.GL_CLAMP);
+            Gl.glTexParameteri((uint)Gl.GetTarget.GL_TEXTURE_2D, (uint)Gl.TextureParameterName.GL_TEXTURE_WRAP_S, (int)Gl.TextureWrapMode.GL_CLAMP);
             Gl.glTexParameteri((uint)Gl.GetTarget.GL_TEXTURE_2D, (uint)Gl.TextureParameterName.GL_TEXTURE_WRAP_T, (int)Gl.TextureWrapMode.GL_CLAMP);
 
             bitmap.UnlockBits(bmpData);
