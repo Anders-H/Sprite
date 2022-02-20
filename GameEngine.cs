@@ -9,12 +9,14 @@ namespace Sprite
         private readonly EventHandler _onLoadResources;
         private string WindowTitle { get; }
         public SpriteWindow SpriteWindow { get; private set; }
+        public IScene CurrentScene { get; private set; }
 
-        public GameEngine(string windowTitle, EventHandler onLoadResources)
+        public GameEngine(string windowTitle, EventHandler onLoadResources, IScene startScene)
         {
             _loadResourcesComplete = false;
             WindowTitle = windowTitle;
             _onLoadResources = onLoadResources;
+            CurrentScene = startScene;
         }
 
         public void LoadResources()
@@ -37,6 +39,19 @@ namespace Sprite
         public void SetLoadResourcesComplete()
         {
             _loadResourcesComplete = true;
+        }
+
+        public void Run()
+        {
+            while (SpriteWindow.Running)
+            {
+                CurrentScene.Render(this);
+            }
+        }
+
+        public void SetScene(IScene scene)
+        {
+            CurrentScene = scene;
         }
     }
 }
