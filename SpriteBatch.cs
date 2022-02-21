@@ -2,7 +2,7 @@
 
 namespace Sprite
 {
-    internal class SpriteBatch
+    public class SpriteBatch
     {
         private List<BatchGameSprite> Sprites { get; }
 
@@ -10,6 +10,9 @@ namespace Sprite
         {
             Sprites = new List<BatchGameSprite>();
         }
+
+        public int Count =>
+            Sprites.Count;
 
         public void Add(BatchGameSprite sprite) =>
             Sprites.Add(sprite);
@@ -27,6 +30,13 @@ namespace Sprite
                     return;
                 }
             }
+        }
+
+        public void Draw(SpriteWindow spriteWindow)
+        {
+            foreach (var batchGameSprite in Sprites)
+                if (batchGameSprite.Alive())
+                    batchGameSprite.Draw(spriteWindow);
         }
     }
 }

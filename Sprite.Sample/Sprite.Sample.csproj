@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BouncingSprite.cs" />
+    <Compile Include="DecorativeSpaceship.cs" />
     <Compile Include="GameScene.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
