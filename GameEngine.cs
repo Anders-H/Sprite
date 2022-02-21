@@ -11,12 +11,11 @@ namespace Sprite
         public SpriteWindow SpriteWindow { get; private set; }
         public IScene CurrentScene { get; private set; }
 
-        public GameEngine(string windowTitle, EventHandler onLoadResources, IScene startScene)
+        public GameEngine(string windowTitle, EventHandler onLoadResources)
         {
             _loadResourcesComplete = false;
             WindowTitle = windowTitle;
             _onLoadResources = onLoadResources;
-            CurrentScene = startScene;
         }
 
         public void LoadResources()
@@ -41,8 +40,13 @@ namespace Sprite
             _loadResourcesComplete = true;
         }
 
-        public void Run()
+        public void Run(IScene startScene)
         {
+            if (!_loadResourcesComplete)
+                throw new SystemException("Resources not loaded.");
+
+            CurrentScene = startScene;
+
             while (SpriteWindow.Running)
             {
                 CurrentScene.Render(this);

@@ -10,15 +10,11 @@ namespace Sprite.Sample
 
         static void Main(string[] args)
         {
-            GameEngine = new GameEngine(
-                "My Game",
-                OnLoadResources,
-                new StartScene()
-            );
+            GameEngine = new GameEngine("My Game", OnLoadResources);
 
             GameEngine.LoadResources();
 
-            GameEngine.Run();
+            GameEngine.Run(new StartScene());
         }
 
         private static void OnLoadResources(object sender, EventArgs e)
