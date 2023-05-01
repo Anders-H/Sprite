@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Sprite
 {
@@ -22,13 +24,12 @@ namespace Sprite
         {
             SpriteWindow = new SpriteWindow(WindowTitle);
             SpriteWindow.OnLoadResources += _onLoadResources;
-            SpriteWindow.Form.Text = "Loading...";
+            SpriteWindow.Form.Text = @"Loading...";
             SpriteWindow.DoEvents();
 
             while (!_loadResourcesComplete)
             {
                 Thread.Sleep(100);
-                Thread.Yield();
                 SpriteWindow.DoEvents();
             }
 
@@ -47,9 +48,16 @@ namespace Sprite
 
             CurrentScene = startScene;
 
+            var stopwatch = new Stopwatch();
+
             while (SpriteWindow.Running)
             {
+                stopwatch.Restart();
                 CurrentScene.Render(this);
+                var sleep = 17 - stopwatch.ElapsedMilliseconds;
+
+                if (sleep > 0)
+                    Thread.Sleep((int)sleep);
             }
         }
 

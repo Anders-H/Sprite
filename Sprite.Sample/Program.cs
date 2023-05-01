@@ -8,7 +8,7 @@ namespace Sprite.Sample
         public static SpriteBitmap GlBitmap;
         public static GameEngine GameEngine { get; private set; }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             GameEngine = new GameEngine("My Game", OnLoadResources);
 
