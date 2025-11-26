@@ -1,20 +1,20 @@
-﻿namespace Sprite.Sample
+﻿#nullable enable
+namespace Sprite.Sample;
+
+public class DecorativeSpaceship : BatchGameSprite
 {
-    public class DecorativeSpaceship : BatchGameSprite
+    private int SpeedY { get; set; }
+
+    public DecorativeSpaceship(SpriteBitmap spriteBitmap, int x, int speedY) : base(spriteBitmap, x, 200, 0)
     {
-        private int SpeedY { get; set; }
-
-        public DecorativeSpaceship(SpriteBitmap spriteBitmap, int x, int speedY) : base(spriteBitmap, x, 200, 0)
-        {
-            SpeedY = speedY;
-        }
-
-        public override void ApplyLogic()
-        {
-            Y += SpeedY;
-        }
-
-        public override bool Alive() =>
-            Y > -5;
+        SpeedY = speedY;
     }
+
+    public override void ApplyLogic()
+    {
+        Y += SpeedY;
+    }
+
+    public override bool Alive() =>
+        Y > -5;
 }

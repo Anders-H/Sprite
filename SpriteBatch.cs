@@ -1,42 +1,42 @@
-﻿using System.Collections.Generic;
+﻿#nullable enable
+using System.Collections.Generic;
 
-namespace Sprite
+namespace Sprite;
+
+public class SpriteBatch
 {
-    public class SpriteBatch
+    private List<BatchGameSprite> Sprites { get; }
+
+    public SpriteBatch()
     {
-        private List<BatchGameSprite> Sprites { get; }
+        Sprites = new List<BatchGameSprite>();
+    }
 
-        public SpriteBatch()
+    public int Count =>
+        Sprites.Count;
+
+    public void Add(BatchGameSprite sprite) =>
+        Sprites.Add(sprite);
+
+    public void ApplyLogic()
+    {
+        foreach (var batchGameSprite in Sprites)
+            batchGameSprite.ApplyLogic();
+
+        foreach (var batchGameSprite in Sprites)
         {
-            Sprites = new List<BatchGameSprite>();
-        }
-
-        public int Count =>
-            Sprites.Count;
-
-        public void Add(BatchGameSprite sprite) =>
-            Sprites.Add(sprite);
-
-        public void ApplyLogic()
-        {
-            foreach (var batchGameSprite in Sprites)
-                batchGameSprite.ApplyLogic();
-
-            foreach (var batchGameSprite in Sprites)
+            if (!batchGameSprite.Alive())
             {
-                if (!batchGameSprite.Alive())
-                {
-                    Sprites.Remove(batchGameSprite);
-                    return;
-                }
+                Sprites.Remove(batchGameSprite);
+                return;
             }
         }
+    }
 
-        public void Draw(SpriteWindow spriteWindow)
-        {
-            foreach (var batchGameSprite in Sprites)
-                if (batchGameSprite.Alive())
-                    batchGameSprite.Draw(spriteWindow);
-        }
+    public void Draw(SpriteWindow spriteWindow)
+    {
+        foreach (var batchGameSprite in Sprites)
+            if (batchGameSprite.Alive())
+                batchGameSprite.Draw(spriteWindow);
     }
 }

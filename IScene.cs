@@ -1,7 +1,7 @@
-﻿namespace Sprite
+﻿#nullable enable
+namespace Sprite;
+
+public interface IScene
 {
-    public interface IScene
-    {
-        void Render(GameEngine gameEngine);
-    }
+    void Render(GameEngine gameEngine);
 }
